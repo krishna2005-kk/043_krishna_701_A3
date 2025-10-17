@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>CDN Component 2 - Counter & Form</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const { useState, useRef } = React;
+
+    function CounterForm() {
+      const [count, setCount] = useState(0);
+      const nameRef = useRef();
+
+      return React.createElement('div', {style:{fontFamily:'Arial', padding:'20px'}}, [
+        React.createElement('h2', null, 'Counter & Simple Form (CDN)'),
+        React.createElement('p', null, 'Count: ' + count),
+        React.createElement('button', {onClick: () => setCount(c => c+1)}, 'Increment'),
+        React.createElement('hr', null),
+        React.createElement('form', {onSubmit: (e) => { e.preventDefault(); alert('Hello ' + nameRef.current.value); }}, [
+          React.createElement('input', {ref: nameRef, placeholder: 'Enter your name'}),
+          React.createElement('button', {type:'submit'}, 'Greet')
+        ])
+      ]);
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(CounterForm));
+  </script>
+</body>
+</html>

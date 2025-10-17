@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>CDN Component 1 - Hello Component</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const e = React.createElement;
+
+    // Functional component
+    function Hello(props) {
+      return e('div', {style:{fontFamily:'Arial', padding:'20px'}}, [
+        e('h2', null, 'Hello, ' + (props.name ?? 'Student') + '!'),
+        e('p', null, 'This is a functional component created using React CDN (no build tools).')
+      ]);
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(e(Hello, {name: 'MSc.It Student'}));
+  </script>
+</body>
+</html>
